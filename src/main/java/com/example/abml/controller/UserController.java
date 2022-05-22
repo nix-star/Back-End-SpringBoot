@@ -4,7 +4,6 @@
  */
 package com.example.abml.controller;
 
-import com.example.abml.model.Persona;
 import com.example.abml.model.User;
 import com.example.abml.service.IUserService;
 import java.util.List;
