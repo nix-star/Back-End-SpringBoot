@@ -4,8 +4,8 @@
  */
 package com.example.abml.service;
 
-import com.example.abml.model.User;
-import com.example.abml.repository.IUserRepository;
+import com.example.abml.model.Experience;
+import com.example.abml.repository.IExperienceRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,29 +15,29 @@ import org.springframework.stereotype.Service;
  * @author seba_
  */
 @Service
-public class UserService implements IUserService{
-    
+public class ExperienceService implements IExperienceService{
+
     @Autowired
-    private IUserRepository userRepo;
+    private IExperienceRepository expRepo;
+
+    @Override
+    public List<Experience> getExp(){
+	return expRepo.findAll();
+    }
+
+    @Override
+    public void saveExp(Experience exp){
+	expRepo.save(exp);
+    }
+
+    @Override
+    public void deleteExp(Long id){
+	expRepo.deleteById(id);
+    }
+
+    @Override
+    public Experience findExp(Long id){
+	return expRepo.findById(id).orElse(null);
+    }
     
-    @Override
-    public List<User> getUsers(){
-	return userRepo.findAll();
-    }
-
-    @Override
-    public void saveUser(User user){
-	userRepo.save(user);
-    }
-
-    @Override
-    public void deleteUser(Long id){
-	userRepo.deleteById(id);
-    }
-
-    @Override
-    public User findUser(Long id){
-	return userRepo.findById(id).orElse(null);
-    }
-
 }

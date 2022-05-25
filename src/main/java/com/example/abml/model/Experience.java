@@ -20,7 +20,7 @@ import lombok.Setter;
 public class Experience {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
     String job;
 

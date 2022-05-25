@@ -25,4 +25,5 @@ public class Skill {
     String technology;
     String logo;
     byte level;
+
 }
