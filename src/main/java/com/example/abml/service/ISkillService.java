@@ -4,17 +4,18 @@
  */
 package com.example.abml.service;
 
-import com.example.abml.model.User;
+import com.example.abml.model.Skill;
 import java.util.List;
 
 /**
  *
  * @author seba_
  */
-public interface IUserService {
+public interface ISkillService {
 
-    public List<User> getUsers();
-    public void saveUser(User user);
-    public void deleteUser(Long id);
-    public User findUser(Long id);
+    public List<Skill> getSkills();
+    public void saveSkill(Skill skill);
+    public void deleteSkill(Long id);
+    public Skill findSkill(Long id);
+    
 }
