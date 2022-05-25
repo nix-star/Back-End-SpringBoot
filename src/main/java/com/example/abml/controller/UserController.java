@@ -46,11 +46,11 @@ public class UserController {
 	return "Usuario creado correctamente";
     }
 
-    @DeleteMapping ("/user/delete/{id}")
-    public String deletePersona(@PathVariable Long id){
-	ius.deleteUser(id);
-	return "Usuario eliminado correctamente";
-    }
+//    @DeleteMapping ("/user/delete/{id}")
+//    public String deletePersona(@PathVariable Long id){
+//	ius.deleteUser(id);
+//	return "Usuario eliminado correctamente";
+//    }
 
     @PutMapping ("/user/edit/{id}")
     public User editPersona (@PathVariable Long id,
