@@ -24,35 +24,36 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://ap-frontend-angular.firebaseapp.com",
+			"https://ap-frontend-angular.web.app"})
 public class UserController {
 
     @Autowired
     private IUserService ius;
     
-    @GetMapping("/user")
+    @GetMapping("/api/user")
     public List<User> getUsers(){
 	return ius.getUsers();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/api/user/{id}")
     public User getUserById(@PathVariable Long id){
 	return ius.findUser(id);
     }
 
-    @PostMapping ("/user/create")
+    @PostMapping ("/api/user/create")
     public String createStudent(@RequestBody User user){
 	ius.saveUser(user);
 	return "Usuario creado correctamente";
     }
 
-//    @DeleteMapping ("/user/delete/{id}")
+//    @DeleteMapping ("/api/user/delete/{id}")
 //    public String deletePersona(@PathVariable Long id){
 //	ius.deleteUser(id);
 //	return "Usuario eliminado correctamente";
 //    }
 
-    @PutMapping ("/user/edit/{id}")
+    @PutMapping ("/api/user/edit/{id}")
     public User editPersona (@PathVariable Long id,
 				@RequestParam ("name") String name,
 				@RequestParam ("user") String user,

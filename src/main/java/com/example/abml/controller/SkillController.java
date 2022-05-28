@@ -23,41 +23,42 @@ import org.springframework.web.bind.annotation.RestController;
  * @author seba_
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://ap-frontend-angular.firebaseapp.com",
+			"https://ap-frontend-angular.web.app"})
 public class SkillController {
 
     @Autowired
     private ISkillService iserv;
 
-    @GetMapping("/skill")
+    @GetMapping("/api/skill")
     public List<Skill> getSkills(){
 	return iserv.getSkills();
     }
 
-    @GetMapping("/skill/{id}")
+    @GetMapping("/api/skill/{id}")
     public Skill getSkillById(@PathVariable Long id){
 	return iserv.findSkill(id);
     }
 
-    @PostMapping("/skill/create")
+    @PostMapping("/api/skill/create")
     public String createSkill(@RequestBody Skill skill){
 	iserv.saveSkill(skill);
 	return "Habilidad añadida correctamente";
     }
 
-//    @PostMapping("/skill/create/multi")
+//    @PostMapping("/api/skill/create/multi")
 //    public List<Skill> addSkills(@RequestBody List<Skill> skills){
 //	for (Skill s: skills) iserv.saveSkill(s);
 //	return iserv.getSkills();
 //    }
 
-    @DeleteMapping("/skill/delete/{id}")
+    @DeleteMapping("/api/skill/delete/{id}")
     public String deleteSkill(@PathVariable Long id){
 	iserv.deleteSkill(id);
 	return "Habilidad borrada correctamente";
     }
 
-    @PutMapping("/skill/edit/{id}")
+    @PutMapping("/api/skill/edit/{id}")
     public Skill editSkill(@PathVariable Long id,
 			   @RequestParam ("technology") String technology,
 			   @RequestParam ("logo") String logo,

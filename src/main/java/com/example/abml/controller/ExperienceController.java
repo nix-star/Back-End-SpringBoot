@@ -23,29 +23,30 @@ import org.springframework.web.bind.annotation.RestController;
  * @author seba_
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://ap-frontend-angular.firebaseapp.com",
+			"https://ap-frontend-angular.web.app"})
 public class ExperienceController {
 
     @Autowired
     private IExperienceService iexp;
 
-    @GetMapping("/experience")
+    @GetMapping("/api/experience")
     public List<Experience> getExp(){
 	return iexp.getExp();
     }
 
-    @GetMapping("/experience/{id}")
+    @GetMapping("/api/experience/{id}")
     public Experience getExpById(@PathVariable Long id){
 	return iexp.findExp(id);
     }
 
-    @PostMapping("/experience/create")
+    @PostMapping("/api/experience/create")
     public String postExp(@RequestBody Experience exp){
 	iexp.saveExp(exp);
 	return "Experiencia añadida";
     }
 
-    @PutMapping("/experience/edit/{id}")
+    @PutMapping("/api/experience/edit/{id}")
     public Experience editExp(@PathVariable Long id, @RequestParam ("job") String job){
 	Experience exp = iexp.findExp(id);
 	exp.setJob(job);
@@ -53,7 +54,7 @@ public class ExperienceController {
 	return exp;
     }
 
-    @DeleteMapping("/experience/delete/{id}")
+    @DeleteMapping("/api/experience/delete/{id}")
     public String deleteExp(@PathVariable Long id){
 	iexp.deleteExp(id);
 	return "Registro " + id + " eliminado correctamente";

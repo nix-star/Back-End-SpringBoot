@@ -21,29 +21,30 @@ import org.springframework.web.bind.annotation.RestController;
  * @author seba_
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://ap-frontend-angular.firebaseapp.com",
+			"https://ap-frontend-angular.web.app"})
 public class ProjectController {
 
     @Autowired
     private IProjectService proser;
     
-    @GetMapping("/project")
+    @GetMapping("/api/project")
     public List<Project> getProjects(){
 	return proser.getProjects();
     }
 
-    @GetMapping("/project/{id}")
+    @GetMapping("/api/project/{id}")
     public Project getProjectById(@PathVariable Long id){
 	return proser.findProject(id);
     }
 
-    @PostMapping("/project/create")
+    @PostMapping("/api/project/create")
     public String createProject(@RequestBody Project project){
 	proser.saveProject(project);
 	return "Proyecto añadido al portafolio";
     }
 
-    @DeleteMapping("/project/delete/{id}")
+    @DeleteMapping("/api/project/delete/{id}")
     public String deleteProject(@PathVariable Long id){
 	proser.deleteProject(id);
 	return "Proyecto elimminado del portafolio";
